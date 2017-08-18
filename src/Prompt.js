@@ -143,7 +143,12 @@ export default class Prompt extends Component {
 
   render() {
     if (Platform.OS === 'web') {
-        return this.props.visible ? this._renderDialog() : null;
+        if (!this.props.visible) {
+            return null;
+        }
+        return (<View style={styles.container}>
+            {this._renderDialog()}
+        </View>);
     }
     return (
       <Modal onRequestClose={() => this.close()} transparent={true} visible={this.props.visible}>
