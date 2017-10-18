@@ -9,6 +9,7 @@ export default StyleSheet.create({
     left: 0,
     right: 0,
     bottom: 0,
+    zIndex: 100000,
   },
   dialog: {
     flex: 1,
