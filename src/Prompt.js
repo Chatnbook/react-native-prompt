@@ -13,6 +13,7 @@ export default class Prompt extends Component {
   static propTypes = {
     title: PropTypes.string.isRequired,
     visible: PropTypes.bool,
+    modal: PropTypes.bool,
     defaultValue: PropTypes.string,
     placeholder: PropTypes.string,
     onCancel: PropTypes.func.isRequired,
@@ -35,6 +36,7 @@ export default class Prompt extends Component {
 
   static defaultProps = {
     visible: false,
+    modal: false,
     defaultValue: '',
     cancelText: 'Cancel',
     submitText: 'OK',
@@ -141,14 +143,18 @@ export default class Prompt extends Component {
     );
   };
 
+  renderContainer() {
+      return (<View style={styles.container}>
+          {this._renderDialog()}
+      </View>);
+  }
+
   render() {
-    if (Platform.OS === 'web') {
-        if (!this.props.visible) {
-            return null;
-        }
-        return (<View style={styles.container}>
-            {this._renderDialog()}
-        </View>);
+    if (!this.props.visible) {
+      return null;
+    }
+    if (Platform.OS === 'web' || !this.props.modal) {
+        return this.renderContainer();
     }
     return (
       <Modal onRequestClose={() => this.close()} transparent={true} visible={this.props.visible}>
