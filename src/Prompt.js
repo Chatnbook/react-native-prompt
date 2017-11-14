@@ -119,7 +119,7 @@ export default class Prompt extends Component {
               onChangeText={this._onChangeText}
               placeholder={placeholder}
               autoFocus={true}
-              underlineColorAndroid="white"
+              underlineColorAndroid="transparent"
               {...this.props.textInputProps} />
           </View>
           <View style={[styles.dialogFooter, { borderColor }]}>

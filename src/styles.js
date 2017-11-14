@@ -47,6 +47,7 @@ export default StyleSheet.create({
   dialogInput: {
     height: 50,
     fontSize: 18,
+    paddingBottom: 0,
     ...outline,
   },
   dialogFooter: {
